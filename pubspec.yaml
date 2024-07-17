@@ -1,0 +1,48 @@
+name: dart_define_prac
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+  http: ^0.13.4
+  download_assets:
+  dart_define:
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+
+# Optional: If you have assets, fonts, or other configurations, you can include them here in the flutter section.
+flutter:
+  assets:
+  uses-material-design: true
+
+
+# Custom configurations or scripts for dart_define should be separate from dependencies:
+# For example, if you have a script or configuration file for dart_define, it should be handled separately.
+# It might look something like this:
+#
+dart_define:
+ dart: true
+ json: true
+ json_path: dart_define.json
+ dart_path: lib/dart_define.gen.dart
+ class_name: dart_define
+ variables:
+   - name: STRING_VALUE
+     description: An example String value
+     default: hello world!
+     required: false
+ flavors:
+   - name: production
+     description: The production flavor
