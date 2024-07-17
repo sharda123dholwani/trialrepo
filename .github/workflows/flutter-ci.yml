@@ -30,7 +30,6 @@ jobs:
           tag: v1.0.${{ github.run_number }}
           token: ${{ secrets.TOKEN }}
 
-  #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
 
 
 
