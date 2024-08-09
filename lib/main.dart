@@ -1,8 +1,17 @@
 import 'package:dart_define_prac/dart_define_class.dart';
+import 'package:dart_define_prac/database_helper.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:download_assets/download_assets.dart';
-void main() {
+import 'package:sqflite_sqlcipher/sqflite.dart';
+import 'package:firebase_core/firebase_core.dart';
+
+final dbHelper = DatabaseHelper();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
   runApp(const MyApp());
 }
 
@@ -36,6 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
   DownloadAssetsController downloadAssetsController = DownloadAssetsController();
   bool downloaded = false;
 
+
   void makeApiCall() {
     String s = DartDefine.stringValue;
     print(s);
@@ -46,6 +56,15 @@ class _MyHomePageState extends State<MyHomePage> {
     print("name: $test $test1");
   }
 
+  void insertIntoDatabase() async {
+    await dbHelper.insertData({
+      "name":"sharda",
+      "id" : 1
+    });
+
+    await dbHelper.queryRows();
+  }
+
   void init() async {
     await downloadAssetsController.init(assetDir: 'assets', useFullDirectoryPath: false );
     downloaded = await downloadAssetsController.assetsDirAlreadyExists();
@@ -54,10 +73,15 @@ class _MyHomePageState extends State<MyHomePage> {
     });
     print("downloaded: $downloaded");
   }
+
+  void databaseInitialize() async {
+    await dbHelper.init();
+  }
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    databaseInitialize();
     makeApiCall();
     init();
   }
@@ -72,8 +96,9 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: ElevatedButton(onPressed: () {
-
-        }, child:const Text("Call an API")),
+          insertIntoDatabase();
+          FirebaseCrashlytics.instance.crash();
+        }, child:const Text("insert ")),
       ),
 
        // This trailing comma makes auto-formatting nicer for build methods.

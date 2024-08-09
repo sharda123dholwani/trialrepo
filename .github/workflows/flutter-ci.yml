@@ -1,11 +1,8 @@
 on:
-  pull_request:
-    branches:
-      - main
-      - master
   push:
     branches:
       - test
+      - prod
 name: "Build & Release"
 jobs:
   build:
@@ -22,7 +19,14 @@ jobs:
           channel: 'stable'
           architecture: x64
 
-      - run: flutter build apk --release --split-per-abi
+      - name: Build APK for Test Branch
+        if: github.ref == 'refs/heads/test'
+        run: flutter build apk --release --split-per-abi -t lib/main_dev.dart --flavor dev
+
+      - name: Build APK for Prod Branch
+        if: github.ref == 'refs/heads/prod'
+        run: flutter build apk --release --split-per-abi -t lib/main_prod.dart --flavor prod
+
       - name: Push to Releases
         uses: ncipollo/release-action@v1
         with:

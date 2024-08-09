@@ -12,8 +12,13 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.6
   http: ^0.13.4
+  firebase_core:
+  firebase_crashlytics:
+  path_provider:
   download_assets:
   dart_define:
+  sqflite_sqlcipher:
+  path:
 
 
 dev_dependencies:

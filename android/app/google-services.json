@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1070343793886",
+    "project_id": "crashsop-2cf1a",
+    "storage_bucket": "crashsop-2cf1a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1070343793886:android:677cd3ecd9b125cf26e64f",
+        "android_client_info": {
+          "package_name": "com.example.dart_define_prac"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBs60xJp--Io2OEML5D5NDDb4oUNnxUD48"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
