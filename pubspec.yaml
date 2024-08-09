@@ -17,7 +17,6 @@ dependencies:
   path_provider:
   download_assets:
   dart_define:
-  sqflite_sqlcipher:
   path:
 
 
