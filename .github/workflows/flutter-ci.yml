@@ -3,6 +3,7 @@ on:
     branches:
       - test
       - prod
+      - dev
 name: "Build & Release"
 jobs:
   build:
@@ -39,5 +40,4 @@ jobs:
 
 
 
-# push to master, main, develop
-# pull request on main master
+
